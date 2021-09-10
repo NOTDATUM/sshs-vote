@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('../partials/head') %>
+  </head>
+  <body>
+    <% if(isAuthenticated){ %>
+      <div class="container mb-3">
+        <br>
+        <br>
+        <h3 class="contentBoxTop mb-3">투표</h3>
+  
+        <form action="/vote" method="post">
+          <div class="form-group row">
+            <label for="nvote" class="col-sm-3 col-form-label"><a href="/img1">교잠후보 1</label></a>
+            <div class="col-sm-9">
+              <input type="checkbox" class="vote" id="num1" name="nvote" value="1" onclick="oneCheckbox(this)">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="nvote" class="col-sm-3 col-form-label"><a href="/img2">교잠후보 2</label></a>
+            <div class="col-sm-9">
+              <input type="checkbox" class="vote" id="num2" name="nvote" value="2" onclick="oneCheckbox(this)">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="nvote" class="col-sm-3 col-form-label"><a href="/img3">교잠후보 3</label></a>
+            <div class="col-sm-9">
+              <input type="checkbox" class="vote" id="num3" name="nvote" value="3" onclick="oneCheckbox(this)">
+            </div>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary">확인</button>
+          </div>
+          <a href="/users/<%= currentUser.username %>" class="nav-link">마이페이지</a></li>
+          <a href="/logout" class="nav-link">로그아웃</a></li>
+        </form>
+  
+      </div>
+      <% } else { %>
+        <div class="container mb-3">
+        <br>
+        <br>
+        <h1>로그인해주세요</h1>
+        <a href="/login" class="nav-link">로그인</a></li>
+        </div>
+      <% } %>
+  </body>
+  <script type="text/javascript">
+    function oneCheckbox(a){
+        var obj = document.getElementsByClassName("vote");
+        for(var i=0; i<obj.length; i++){
+            if(obj[i] != a){
+                obj[i].checked = false;
+            }
+        }
+    }
+    if(!$("#num1").is(":checked")){
+      $("#num1").val(1);
+    }else{
+      $("#num1").val(0);
+    }
+    if(!$("#num2").is(":checked")){
+      $("#num2").val(2);
+    }else{
+      $("#num2").val(0);
+    }
+    if(!$("#num3").is(":checked")){
+      $("#num3").val(3);
+    }else{
+      $("#num3").val(0);
+    }
+  </script>
+</html>

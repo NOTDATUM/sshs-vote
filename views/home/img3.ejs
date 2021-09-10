@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('../partials/head') %>
+  </head>
+  <body>
+    <% if(isAuthenticated){ %>
+      <div class="container mb-3">
+        <br>
+        <br>
+        <h3 class="contentBoxTop mb-3">교잠 후보 3</h3>
+        <img src="img3.jpg" width="600" height="600">
+        <br>
+          <a class="btn btn-primary" href="/vote">Back</a>
+          <a href="/users/<%= currentUser.username %>" class="nav-link">마이페이지</a></li>
+          <a href="/logout" class="nav-link">로그아웃</a></li>
+        </form>
+  
+      </div>
+      <% } else { %>
+        <div class="container mb-3">
+        <br>
+        <br>
+        <h1>로그인해주세요</h1>
+        <a href="/login" class="nav-link">로그인</a></li>
+        </div>
+      <% } %>
+  </body>
+</html>
